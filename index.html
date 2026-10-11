@@ -1,0 +1,1198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Don't Measure Your Worth in Likes | Gen Z Digital Well-Being</title>
+  <meta name="description" content="Your mental well-being matters more than your follower count. Take the 60-second quiz, join the 7-day reset challenge, and sign the digital pledge.">
+  <meta name="theme-color" content="#FDFBF7">
+  
+  <!-- Google Fonts: Fredoka & Patrick Hand for friendly playful handwritten neo-brutalism, Plus Jakarta Sans & Quicksand for clean body text -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Patrick+Hand&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Caveat:wght@600;700&display=swap" rel="stylesheet">
+  
+  <!-- Canvas Confetti for celebrations -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- App Shell: Centered Mobile Device Viewport -->
+  <div id="app-container" class="app-container">
+    
+    <!-- Top Announcement Bar / Campaign Ribbon -->
+    <header class="campaign-header">
+      <div class="banner-ribbon">
+        <span class="ribbon-leaf left-leaf">🌿</span>
+        <span class="ribbon-text">WE'RE GEN Z, NOT OUR LIKES.</span>
+        <span class="ribbon-leaf right-leaf">🌿</span>
+      </div>
+      <div class="header-actions">
+        <button id="sound-toggle" class="badge-pill audio-btn" title="Toggle Sound Effects" aria-label="Toggle Sound">
+          <span id="sound-icon">🔊</span> <span class="btn-text">Audio On</span>
+        </button>
+        <button id="grayscale-toggle" class="badge-pill grayscale-btn" title="Toggle Grayscale Mode" aria-label="Toggle Grayscale Mode">
+          <span>🕶️</span> <span class="btn-text">Try Grayscale</span>
+        </button>
+      </div>
+      <!-- User Profile & Authentication Status Bar -->
+      <div class="user-auth-bar" id="user-auth-bar">
+        <div class="auth-logged-in" id="auth-logged-in" style="display: none;">
+          <span class="user-avatar-tag" id="user-profile-badge">
+            <span class="avatar-icon">👤</span> 
+            <span class="avatar-text"><strong id="logged-user-name">Student</strong> <span id="logged-user-dob" class="user-dob-tag"></span></span>
+          </span>
+          <button id="btn-logout" class="badge-pill logout-btn" title="Log Out and preserve data">
+            <span>🚪 Log Out</span>
+          </button>
+        </div>
+        <div class="auth-logged-out" id="auth-logged-out">
+          <button id="btn-open-login" class="badge-pill login-btn pulse-glow" data-open="modal-login" type="button" aria-label="Open Login Modal">
+            <span>🔑 Log In (Save My Data)</span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- MAIN SCROLLABLE CONTENT -->
+    <main class="main-content" id="main-content">
+      
+      <!-- ================= SECTION A: HERO & 60-SEC QUIZ ================= -->
+      <section id="section-home" class="app-section section-hero">
+
+        <!-- Student Pass Banner: Start Saved Flow -->
+        <div class="card student-pass-banner washi-tape-top" id="student-pass-banner">
+          <div class="washi-tape" style="background-color: rgba(255, 230, 109, 0.9);"></div>
+          <div class="pass-banner-content">
+            <div class="pass-avatar-wrap">
+              <span class="pass-icon" id="pass-banner-icon">🪪</span>
+            </div>
+            <div class="pass-text-group">
+              <div class="pass-tag" id="pass-banner-tag">STUDENT DIGITAL PASS</div>
+              <h3 class="pass-title" id="pass-banner-title">Start Your Journal Saved</h3>
+              <p class="pass-desc" id="pass-banner-desc">Enter Name, DOB & Password to save your 7-day challenge, mood reflection & pledge across visits.</p>
+            </div>
+          </div>
+          <div class="pass-action-row" id="pass-action-row">
+            <button type="button" id="btn-banner-login" class="btn btn-sm btn-yellow" data-open="modal-login">
+              <span>🔑 Log In / Create Pass</span>
+            </button>
+            <button type="button" id="btn-banner-guest" class="btn btn-sm btn-white">
+              <span>Explore as Guest ➔</span>
+            </button>
+          </div>
+        </div>
+        
+        <!-- Hero Sticker Card -->
+        <div class="card hero-card washi-tape-top">
+          <!-- Tape Decoration -->
+          <div class="washi-tape"></div>
+          
+          <div class="hero-tag-badge">
+            <span class="star-icon">✨</span> CAMPUS MENTAL HEALTH INITIATIVE
+          </div>
+
+          <h1 class="hero-title">
+            DON'T MEASURE <br>
+            <span class="sub-headline">YOUR WORTH IN</span> <br>
+            <span class="likes-block-word">
+              <span class="char" style="--c:#FF6B9D">L</span>
+              <span class="char" style="--c:#FFE66D">I</span>
+              <span class="char" style="--c:#A8E6CF">K</span>
+              <span class="char" style="--c:#A2D2FF">E</span>
+              <span class="char" style="--c:#FF6B9D">S</span>
+              <span class="doodle-sparkle sparkle-1">✦</span>
+              <span class="doodle-sparkle sparkle-2">★</span>
+            </span>
+          </h1>
+
+          <p class="hero-subtext">
+            Your mental well-being matters more than your follower count. Your real-life moments won’t wait for your next scroll.
+          </p>
+
+          <!-- Poster Split Visual Tribute: The Two Worlds -->
+          <div class="dual-perspective-container">
+            <div class="split-card left-side">
+              <div class="split-badge likes-glow">❤️ 1.2K Likes</div>
+              <div class="split-illustration phone-scroll-illus">
+                <!-- Illustrated Phone with Social Bubbles -->
+                <div class="phone-frame">
+                  <div class="phone-screen">
+                    <span class="notif notif-1">💬 87</span>
+                    <span class="notif notif-2">👥 342</span>
+                    <div class="phone-face anxious">🥺</div>
+                  </div>
+                </div>
+              </div>
+              <div class="thought-bubble storm-bubble">
+                <span class="thought-text">"Am I enough? Why don't I get more likes?"</span>
+              </div>
+              <p class="split-label caption-red">THE COMPARISON LOOP</p>
+            </div>
+
+            <div class="split-vs">VS</div>
+
+            <div class="split-card right-side">
+              <div class="split-badge real-glow">☀️ Real World</div>
+              <div class="split-illustration real-life-illus">
+                <div class="friends-illustration">
+                  <span class="friend-emoji">👫</span>
+                  <span class="sunset-emoji">🌅</span>
+                  <span class="coffee-emoji">☕</span>
+                </div>
+              </div>
+              <div class="thought-bubble sunny-bubble">
+                <span class="thought-text">"Good friends, real talks, unforgettable days!"</span>
+              </div>
+              <p class="split-label caption-green">UNFILTERED REAL LIFE</p>
+            </div>
+          </div>
+
+          <!-- Doctor & Counselor Endorsement Quote -->
+          <div class="quote-card-mini">
+            <div class="quote-avatar">👩‍⚕️</div>
+            <div class="quote-content">
+              <strong>Campus Wellness Advisory:</strong>
+              <p>"Excessive social media consumption directly amplifies anxiety and comparison fatigue. Micro-breaks restore dopamine balance."</p>
+            </div>
+          </div>
+
+          <!-- Jump Action -->
+          <div class="hero-cta-group">
+            <a href="#section-quiz" class="btn btn-primary btn-full pulse-btn">
+              <span>Take the 60-Sec Checkup</span> <span>👇</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- THE 60-SECOND DIGITAL WELL-BEING QUIZ -->
+        <div id="section-quiz" class="card quiz-card notebook-ruled">
+          <div class="card-header-badge yellow-badge">
+            <span>⏱️ 60-SECOND CHECKUP</span>
+          </div>
+          
+          <h2 class="card-title">Am I Scrolling My Life Away?</h2>
+          <p class="card-subtitle">Take this quick, honest 4-question check to discover where your digital habits stand today.</p>
+
+          <!-- Quiz Stepper Progress -->
+          <div class="quiz-stepper">
+            <div class="step-dots">
+              <div class="step-dot active" data-step="1">1</div>
+              <div class="step-line"></div>
+              <div class="step-dot" data-step="2">2</div>
+              <div class="step-line"></div>
+              <div class="step-dot" data-step="3">3</div>
+              <div class="step-line"></div>
+              <div class="step-dot" data-step="4">4</div>
+            </div>
+            <span class="step-text" id="quiz-step-indicator">Question 1 of 4</span>
+          </div>
+
+          <!-- Interactive Questions Box -->
+          <div id="quiz-questions-wrapper">
+            
+            <!-- Question 1 -->
+            <div class="quiz-question-slide active" data-index="1">
+              <h3 class="question-title">1. How soon after waking up do you check your phone?</h3>
+              <div class="options-list">
+                <button type="button" class="quiz-option-btn" data-value="3">
+                  <span class="opt-icon">⚡</span>
+                  <div class="opt-info">
+                    <strong>Within 5 minutes</strong>
+                    <span>My eyes are barely open before I'm checking notifications</span>
+                  </div>
+                </button>
+                <button type="button" class="quiz-option-btn" data-value="2">
+                  <span class="opt-icon">🍳</span>
+                  <div class="opt-info">
+                    <strong>While eating breakfast</strong>
+                    <span>I wait until I get up, but scroll during my morning meal</span>
+                  </div>
+                </button>
+                <button type="button" class="quiz-option-btn" data-value="1">
+                  <span class="opt-icon">🌅</span>
+                  <div class="opt-info">
+                    <strong>After my morning routine</strong>
+                    <span>I wash up, stretch, and start my day before looking at screens</span>
+                  </div>
+                </button>
+              </div>
+            </div>
+
+            <!-- Question 2 -->
+            <div class="quiz-question-slide" data-index="2">
+              <h3 class="question-title">2. Have you ever felt anxious or archived a post because it didn’t get "enough" likes?</h3>
+              <div class="options-list">
+                <button type="button" class="quiz-option-btn" data-value="3">
+                  <span class="opt-icon">😔</span>
+                  <div class="opt-info">
+                    <strong>Often</strong>
+                    <span>I constantly check the count and feel self-conscious</span>
+                  </div>
+                </button>
+                <button type="button" class="quiz-option-btn" data-value="2">
+                  <span class="opt-icon">🤔</span>
+                  <div class="opt-info">
+                    <strong>Sometimes</strong>
+                    <span>A slow like count stings a bit, but I usually leave it up</span>
+                  </div>
+                </button>
+                <button type="button" class="quiz-option-btn" data-value="1">
+                  <span class="opt-icon">😎</span>
+                  <div class="opt-info">
+                    <strong>Never</strong>
+                    <span>I post what I love for myself, not for external validation</span>
+                  </div>
+                </button>
+              </div>
+            </div>
+
+            <!-- Question 3 -->
+            <div class="quiz-question-slide" data-index="3">
+              <h3 class="question-title">3. When hanging out with friends or at an event, where is your phone?</h3>
+              <div class="options-list">
+                <button type="button" class="quiz-option-btn" data-value="3">
+                  <span class="opt-icon">📱</span>
+                  <div class="opt-info">
+                    <strong>In my hand recording/scrolling</strong>
+                    <span>I catch myself checking stories or recording every moment</span>
+                  </div>
+                </button>
+                <button type="button" class="quiz-option-btn" data-value="2">
+                  <span class="opt-icon">🍽️</span>
+                  <div class="opt-info">
+                    <strong>Face down on the table</strong>
+                    <span>It's right there in sight, and buzzes grab my attention</span>
+                  </div>
+                </button>
+                <button type="button" class="quiz-option-btn" data-value="1">
+                  <span class="opt-icon">🎒</span>
+                  <div class="opt-info">
+                    <strong>Tucked in my pocket or bag</strong>
+                    <span>I'm 100% engaged with the people in front of me</span>
+                  </div>
+                </button>
+              </div>
+            </div>
+
+            <!-- Question 4 -->
+            <div class="quiz-question-slide" data-index="4">
+              <h3 class="question-title">4. How do you usually feel after 30 minutes of scrolling?</h3>
+              <div class="options-list">
+                <button type="button" class="quiz-option-btn" data-value="3">
+                  <span class="opt-icon">🌀</span>
+                  <div class="opt-info">
+                    <strong>Drained & comparing myself</strong>
+                    <span>FOMO, tired eyes, and feeling like everyone else has it better</span>
+                  </div>
+                </button>
+                <button type="button" class="quiz-option-btn" data-value="2">
+                  <span class="opt-icon">😵‍💫</span>
+                  <div class="opt-info">
+                    <strong>Distracted / Foggy</strong>
+                    <span>I lost track of time and didn't really absorb anything</span>
+                  </div>
+                </button>
+                <button type="button" class="quiz-option-btn" data-value="1">
+                  <span class="opt-icon">🌿</span>
+                  <div class="opt-info">
+                    <strong>Relaxed & intentional</strong>
+                    <span>I watched what I wanted, put it away, and felt good</span>
+                  </div>
+                </button>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Quiz Results Container (Hidden until completed) -->
+          <div id="quiz-result-container" class="quiz-result-box" style="display: none;">
+            <div id="result-badge" class="result-persona-badge">THE COMPARISON TRAP</div>
+            <div class="result-avatar" id="result-emoji">❤️‍🩹</div>
+            <h3 class="result-headline" id="result-title">Time for a Gentle Digital Reset!</h3>
+            <p class="result-desc" id="result-description">
+              You're currently letting algorithms dictate too much of your mood and self-image. Remember: Nobody's highlight reel matches real life behind closed doors.
+            </p>
+
+            <div class="result-action-box">
+              <div class="score-pill">Your Well-Being Score: <strong id="score-number">10/12</strong></div>
+              <button id="btn-jump-challenge" class="btn btn-primary btn-full">
+                Start Your 7-Day Reset Challenge 🚀
+              </button>
+              <button id="btn-retake-quiz" class="btn-text-link">
+                🔄 Retake Checkup
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Visual Contrast Card: The Poster's Hourglass & Concert Callout -->
+        <div class="card hourglass-card">
+          <div class="card-corner-ribbon">REALITY CHECK</div>
+          <div class="hourglass-row">
+            <div class="hourglass-svg-wrap">
+              <!-- SVG Hourglass Illustration -->
+              <svg width="68" height="90" viewBox="0 0 70 90" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M10 8H60V16C60 28 42 38 42 45C42 52 60 62 60 74V82H10V74C10 62 28 52 28 45C28 38 10 28 10 16V8Z" fill="#FFFDF0" stroke="#1E1E1E" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+                <!-- Top Sand -->
+                <path d="M16 22C24 32 46 32 54 22H16Z" fill="#FFE66D" stroke="#1E1E1E" stroke-width="2"/>
+                <!-- Bottom Sand Falling -->
+                <path d="M22 76C28 66 42 66 48 76H22Z" fill="#FFE66D" stroke="#1E1E1E" stroke-width="2"/>
+                <line x1="35" y1="45" x2="35" y2="70" stroke="#FFE66D" stroke-width="3" stroke-dasharray="2 3"/>
+                <!-- Glass Reflection Highlights -->
+                <path d="M18 14C22 20 22 24 22 28" stroke="#A2D2FF" stroke-width="2" stroke-linecap="round"/>
+                <path d="M18 64C22 70 22 74 22 76" stroke="#A2D2FF" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <div class="hourglass-text">
+              <h3 class="highlight-pink-title">Your real-life moments won't wait for your next scroll.</h3>
+              <p>While you're filming the sunset through a 6-inch glass screen, the actual sky is glowing right in front of your eyes.</p>
+            </div>
+          </div>
+
+          <div class="concert-contrast-grid">
+            <div class="contrast-col phone-view">
+              <div class="contrast-img-box dark-tint">
+                <span class="scene-emoji">🤳</span>
+                <span class="scene-tag">SCROLLING / RECORDING...</span>
+              </div>
+              <p class="contrast-caption">Watching life through a tiny camera feed</p>
+            </div>
+            <div class="contrast-arrow">➔</div>
+            <div class="contrast-col sunset-view">
+              <div class="contrast-img-box warm-tint">
+                <span class="scene-emoji">🌅🙌</span>
+                <span class="scene-tag tag-gold">FEELING THIS...</span>
+              </div>
+              <p class="contrast-caption">Living the moment with both hands free</p>
+            </div>
+          </div>
+        </div>
+
+      </section>
+
+
+      <!-- ================= SECTION B: 7-DAY CHALLENGE ================= -->
+      <section id="section-challenge" class="app-section">
+        
+        <div class="card notebook-card spiral-bound">
+          <!-- Spiral Rings Graphic along the top -->
+          <div class="spiral-binding-row" aria-hidden="true">
+            <span class="spiral-ring"></span>
+            <span class="spiral-ring"></span>
+            <span class="spiral-ring"></span>
+            <span class="spiral-ring"></span>
+            <span class="spiral-ring"></span>
+            <span class="spiral-ring"></span>
+            <span class="spiral-ring"></span>
+            <span class="spiral-ring"></span>
+          </div>
+
+          <div class="mint-header-banner">
+            <span class="doodle-star">★</span>
+            <h2 class="challenge-title">7-DAY SOCIAL MEDIA RESET CHALLENGE</h2>
+            <span class="doodle-star">★</span>
+          </div>
+
+          <p class="challenge-intro">
+            Check off each habit as you practice it today. Your progress is saved automatically on your phone!
+          </p>
+
+          <!-- Interactive Progress Bar -->
+          <div class="progress-box">
+            <div class="progress-label-row">
+              <span class="progress-count"><strong id="completed-count">0</strong> of 7 Completed</span>
+              <span class="progress-pct" id="completed-pct">0%</span>
+            </div>
+            <div class="progress-track">
+              <div class="progress-bar-fill" id="challenge-progress-fill" style="width: 0%;"></div>
+            </div>
+            <div class="progress-encouragement" id="progress-cheer">
+              Pick your first habit below to kick off your reset!
+            </div>
+          </div>
+
+          <!-- 7 Checklist Items -->
+          <div class="checklist-items" id="challenge-checklist">
+            
+            <label class="check-item-card" data-id="task1">
+              <input type="checkbox" class="task-checkbox" data-index="0">
+              <div class="custom-checkbox">
+                <span class="checkmark-icon">✓</span>
+              </div>
+              <div class="check-content">
+                <div class="check-title">1. Set a daily screen-time limit</div>
+                <div class="check-desc">Cap social apps at 45 minutes and honor the timer today.</div>
+              </div>
+              <span class="day-tag">Day 1</span>
+            </label>
+
+            <label class="check-item-card" data-id="task2">
+              <input type="checkbox" class="task-checkbox" data-index="1">
+              <div class="custom-checkbox">
+                <span class="checkmark-icon">✓</span>
+              </div>
+              <div class="check-content">
+                <div class="check-title">2. Take phone-free meals today</div>
+                <div class="check-desc">No scrolling while eating breakfast, lunch, or dinner. Taste the food!</div>
+              </div>
+              <span class="day-tag">Day 2</span>
+            </label>
+
+            <label class="check-item-card" data-id="task3">
+              <input type="checkbox" class="task-checkbox" data-index="2">
+              <div class="custom-checkbox">
+                <span class="checkmark-icon">✓</span>
+              </div>
+              <div class="check-content">
+                <div class="check-title">3. Do one offline hobby for 30 minutes</div>
+                <div class="check-desc">Sketch, play guitar, read a physical book, skate, or cook.</div>
+              </div>
+              <span class="day-tag">Day 3</span>
+            </label>
+
+            <label class="check-item-card" data-id="task4">
+              <input type="checkbox" class="task-checkbox" data-index="3">
+              <div class="custom-checkbox">
+                <span class="checkmark-icon">✓</span>
+              </div>
+              <div class="check-content">
+                <div class="check-title">4. Spend quality time with friends or family</div>
+                <div class="check-desc">Have an uninterrupted deep conversation with zero phone checks.</div>
+              </div>
+              <span class="day-tag">Day 4</span>
+            </label>
+
+            <label class="check-item-card" data-id="task5">
+              <input type="checkbox" class="task-checkbox" data-index="4">
+              <div class="custom-checkbox">
+                <span class="checkmark-icon">✓</span>
+              </div>
+              <div class="check-content">
+                <div class="check-title">5. Appreciate 3 real moments (no photos!)</div>
+                <div class="check-desc">Notice a breeze, a laughing friend, or the sunset. Keep it in your memory.</div>
+              </div>
+              <span class="day-tag">Day 5</span>
+            </label>
+
+            <label class="check-item-card" data-id="task6">
+              <input type="checkbox" class="task-checkbox" data-index="5">
+              <div class="custom-checkbox">
+                <span class="checkmark-icon">✓</span>
+              </div>
+              <div class="check-content">
+                <div class="check-title">6. Unfollow or mute 3 comparison accounts</div>
+                <div class="check-desc">Declutter feeds that trigger jealousy, body insecurity, or FOMO.</div>
+              </div>
+              <span class="day-tag">Day 6</span>
+            </label>
+
+            <label class="check-item-card" data-id="task7">
+              <input type="checkbox" class="task-checkbox" data-index="6">
+              <div class="custom-checkbox">
+                <span class="checkmark-icon">✓</span>
+              </div>
+              <div class="check-content">
+                <div class="check-title">7. Track how you feel at the end of the day</div>
+                <div class="check-desc">Use the mood log below to reflect on your headspace without notifications.</div>
+              </div>
+              <span class="day-tag">Day 7</span>
+            </label>
+
+          </div>
+
+          <!-- Reset / Restart Button -->
+          <div class="checklist-footer">
+            <button id="btn-reset-checklist" class="btn-secondary-sm">
+              <span>↻ Reset Checklist</span>
+            </button>
+            <span class="autosave-indicator">💾 Auto-saved to this device</span>
+          </div>
+
+          <!-- DAILY MOOD CHECK-IN / SLIDER -->
+          <div class="mood-tracker-box">
+            <div class="mood-box-header">
+              <span class="palette-icon">🎨</span>
+              <h4>Daily Mood Reflection</h4>
+            </div>
+            <p class="mood-box-subtitle">How did your mind feel when you stayed off social feeds today?</p>
+            
+            <div class="mood-faces-row">
+              <button class="mood-btn" data-mood="1" title="Stressed / Overwhelmed">
+                <span class="emoji">😫</span>
+                <span class="label">Stressed</span>
+              </button>
+              <button class="mood-btn" data-mood="2" title="Anxious / Restless">
+                <span class="emoji">😕</span>
+                <span class="label">Anxious</span>
+              </button>
+              <button class="mood-btn" data-mood="3" title="Neutral / Okay">
+                <span class="emoji">😐</span>
+                <span class="label">Okay</span>
+              </button>
+              <button class="mood-btn" data-mood="4" title="Calm / Grounded">
+                <span class="emoji">😊</span>
+                <span class="label">Grounded</span>
+              </button>
+              <button class="mood-btn" data-mood="5" title="Thriving / Present">
+                <span class="emoji">✨</span>
+                <span class="label">Thriving</span>
+              </button>
+            </div>
+
+            <div id="mood-feedback" class="mood-feedback-msg" style="display: none;">
+              <!-- Dynamic message -->
+            </div>
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- ================= SECTION C: DIGITAL PLEDGE ================= -->
+      <section id="section-pledge" class="app-section">
+        
+        <div class="card pledge-card-wrapper pink-theme">
+          
+          <!-- Big Heart Badge Banner -->
+          <div class="pledge-heart-badge">
+            <span class="big-heart">💖</span>
+          </div>
+
+          <div class="pledge-stamp">
+            <h2 class="pledge-quote">
+              "I PLEDGE TO SPEND LESS TIME COMPARING AND MORE TIME LIVING."
+            </h2>
+          </div>
+
+          <p class="pledge-subtext">
+            Join thousands of college students, creators, and teens reclaiming their peace of mind. Leave your signature on the live student wall below!
+          </p>
+
+          <!-- Live Counter Badge -->
+          <div class="pledge-counter-banner">
+            <span class="fire-icon">🔥</span>
+            <span class="counter-text"><strong id="pledge-counter-number">4,832</strong> others have pledged!</span>
+          </div>
+
+          <!-- Pledge Interactive Form -->
+          <form id="pledge-form" class="pledge-form" onsubmit="return false;">
+            <div class="form-group">
+              <label for="pledger-name" class="form-label">Your First Name or Nickname:</label>
+              <input 
+                type="text" 
+                id="pledger-name" 
+                class="form-input" 
+                placeholder="e.g. Maya, Sam, or Alex" 
+                maxlength="25"
+                required
+              >
+            </div>
+
+            <div class="form-group">
+              <label for="pledger-hobby" class="form-label">My favorite offline moment or hobby is:</label>
+              <input 
+                type="text" 
+                id="pledger-hobby" 
+                class="form-input" 
+                placeholder="e.g. Sunset walks, reading sci-fi, baking..." 
+                maxlength="50"
+              >
+            </div>
+
+            <button type="submit" id="btn-sign-pledge" class="btn btn-yellow btn-full btn-large">
+              <span>❤️ SIGN THE PLEDGE!</span>
+            </button>
+          </form>
+
+          <!-- Success Certificate Badge Container (Reveals when signed) -->
+          <div id="pledge-signed-success" class="pledge-success-box" style="display: none;">
+            <div class="certificate-badge">
+              <div class="cert-crown">👑 OFFICIAL PLEDGE SIGNED</div>
+              <h3 id="signed-user-title">Maya's Digital Freedom Badge</h3>
+              <p id="signed-user-quote">"I choose real conversations over likes!"</p>
+              <div class="cert-footer">
+                <span>Verified Gen Z Well-Being Ally</span>
+                <span class="cert-date" id="signed-date">Today</span>
+              </div>
+            </div>
+            
+            <div class="share-actions-row">
+              <button id="btn-share-pledge" class="btn btn-sm btn-white">
+                <span>📋 Copy Pledge Link</span>
+              </button>
+              <button id="btn-save-badge" class="btn btn-sm btn-pink">
+                <span>🖼️ Save Badge</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Live Scrolling Ticker / Wall of Pledges -->
+          <div class="pledge-ticker-section">
+            <div class="ticker-header-label">
+              <span>💬 RECENT PLEDGERS ON CAMPUS</span>
+            </div>
+            
+            <div class="pledger-cards-scroll" id="pledgers-list">
+              <!-- Dynamically populated & interactive -->
+              <div class="pledge-pill user-pinned" id="user-pinned-pledge" style="display: none;">
+                <span class="pill-emoji">⭐</span>
+                <div class="pill-body">
+                  <strong>You</strong>: <span id="user-pinned-text">Signed the pledge!</span>
+                </div>
+              </div>
+
+              <div class="pledge-pill">
+                <span class="pill-emoji">🛹</span>
+                <div class="pill-body"><strong>Leo</strong>: Skateboarding with friends without filming</div>
+              </div>
+              <div class="pledge-pill">
+                <span class="pill-emoji">📚</span>
+                <div class="pill-body"><strong>Priya</strong>: Reading physical fantasy books before bed</div>
+              </div>
+              <div class="pledge-pill">
+                <span class="pill-emoji">🎨</span>
+                <div class="pill-body"><strong>Jordan</strong>: Watercolor painting with no pressure to post</div>
+              </div>
+              <div class="pledge-pill">
+                <span class="pill-emoji">☕</span>
+                <div class="pill-body"><strong>Chloe</strong>: Sunday morning coffees with uninterrupted talks</div>
+              </div>
+              <div class="pledge-pill">
+                <span class="pill-emoji">🎸</span>
+                <div class="pill-body"><strong>Marcus</strong>: Practicing guitar without recording a reel</div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- ================= SECTION D: FREE GUIDE / RESOURCE KIT ================= -->
+      <section id="section-kit" class="app-section">
+        
+        <div class="card resource-kit-card">
+          
+          <div class="gift-box-header">
+            <div class="gift-icon-badge">
+              <span class="gift-emoji">🎁</span>
+            </div>
+            <div class="gift-title-group">
+              <div class="card-header-badge mint-badge">FREE DIGITAL TOOLBOX</div>
+              <h2 class="card-title">Here's Your Free Guide to a Healthier Digital Life</h2>
+              <p class="card-subtitle">Tap any card below for actionable tools, science-backed mindfulness, and instant relief.</p>
+            </div>
+          </div>
+
+          <!-- 2x2 Bento Grid -->
+          <div class="bento-grid">
+            
+            <!-- Bento 1: Simple Tips (Blue) -->
+            <div class="bento-card card-blue" id="bento-tips" tabindex="0" role="button" aria-label="Open Simple Tips Modal">
+              <div class="bento-icon">💡</div>
+              <h3 class="bento-title">Simple Tips</h3>
+              <p class="bento-desc">3 quick settings changes to cut phone addiction in under 60 seconds.</p>
+              <div class="bento-action-tag">
+                <span>View 3-Step Guide ➔</span>
+              </div>
+            </div>
+
+            <!-- Bento 2: Screen-Time & Mood Tracker (Orange) -->
+            <div class="bento-card card-orange" id="bento-tracker" tabindex="0" role="button" aria-label="Open Screen Time Calculator Modal">
+              <div class="bento-icon">📊</div>
+              <h3 class="bento-title">Life Calculator</h3>
+              <p class="bento-desc">Calculate how many months of your life are spent scrolling.</p>
+              <div class="bento-action-tag">
+                <span>Calculate Yours ➔</span>
+              </div>
+            </div>
+
+            <!-- Bento 3: Mindfulness Activities (Green) -->
+            <div class="bento-card card-green" id="bento-mindfulness" tabindex="0" role="button" aria-label="Open 5-Min Mindfulness Activities">
+              <div class="bento-icon">💖</div>
+              <h3 class="bento-title">5-Min Mindfulness</h3>
+              <p class="bento-desc">Interactive Box-Breathing pacer and 5-4-3-2-1 anti-anxiety grounding.</p>
+              <div class="bento-action-tag">
+                <span>Start Breathing Pacer ➔</span>
+              </div>
+            </div>
+
+            <!-- Bento 4: Trusted Resources (Lavender) -->
+            <div class="bento-card card-lavender" id="bento-resources" tabindex="0" role="button" aria-label="Open Trusted Resources & Helplines">
+              <div class="bento-icon">📖</div>
+              <h3 class="bento-title">Trusted Support</h3>
+              <p class="bento-desc">Curated blocker apps, Humane Tech guides & free 24/7 mental health lines.</p>
+              <div class="bento-action-tag">
+                <span>Explore Resources ➔</span>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Free Printable Download Callout -->
+          <div class="printable-callout-card">
+            <div class="callout-icon">🖨️</div>
+            <div class="callout-text">
+              <h4>Get the Printable Journal Tracker</h4>
+              <p>Prefer pen and paper? Download the high-res printable bullet journal habit sheet.</p>
+            </div>
+            <button id="btn-download-tracker" class="btn btn-sm btn-yellow">
+              <span>Download PDF / Print</span>
+            </button>
+          </div>
+
+        </div>
+
+        <!-- Campus Poster Credits & Footer -->
+        <footer class="app-footer">
+          <div class="footer-badge">MBA WELL-BEING CAMPAIGN</div>
+          <p class="footer-text">
+            Designed for students, creators, and humans everywhere. <br>
+            <strong>"Real connections over online comparisons."</strong>
+          </p>
+          <div class="footer-sub-links">
+            <button class="footer-link" id="footer-restart-all">Reset All Local Data</button>
+            <span>•</span>
+            <a href="#section-home" class="footer-link">Back to Top ⬆️</a>
+          </div>
+        </footer>
+
+      </section>
+
+    </main>
+
+    <!-- ================= STICKY BOTTOM NAVIGATION ================= -->
+    <nav class="bottom-nav-bar" id="bottom-nav">
+      <button class="nav-item active" data-target="section-home" aria-label="Home and Quiz">
+        <span class="nav-icon">🏠</span>
+        <span class="nav-label">Checkup</span>
+      </button>
+
+      <button class="nav-item" data-target="section-challenge" aria-label="7-Day Reset Challenge">
+        <span class="nav-icon">📓</span>
+        <span class="nav-label">7-Day Reset</span>
+      </button>
+
+      <button class="nav-item" data-target="section-pledge" aria-label="Digital Pledge Wall">
+        <span class="nav-icon">💖</span>
+        <span class="nav-label">Pledge</span>
+      </button>
+
+      <button class="nav-item" data-target="section-kit" aria-label="Free Resource Kit">
+        <span class="nav-icon">🎁</span>
+        <span class="nav-label">Toolbox</span>
+      </button>
+    </nav>
+
+  </div><!-- /#app-container -->
+
+
+  <!-- ================= INTERACTIVE MODALS ================= -->
+
+  <!-- MODAL 1: SIMPLE TIPS -->
+  <div class="modal-backdrop" id="modal-tips" aria-hidden="true">
+    <div class="modal-dialog card-blue">
+      <div class="modal-header">
+        <div class="modal-title-group">
+          <span class="modal-icon">💡</span>
+          <h3>Simple Tips for Digital Balance</h3>
+        </div>
+        <button class="modal-close-btn" data-close="modal-tips" aria-label="Close modal">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div class="tip-step-card">
+          <div class="step-num-badge">1</div>
+          <div class="step-body">
+            <h4>Enable Grayscale Screen Mode</h4>
+            <p>Social media apps use hyper-saturated red and neon notification badges engineered by behavioral psychologists to trigger dopamine surges. Turn your screen black & white!</p>
+            <div class="device-shortcuts">
+              <div class="shortcut-tag"><strong>iOS:</strong> Settings > Accessibility > Display & Text > Color Filters > On</div>
+              <div class="shortcut-tag"><strong>Android:</strong> Settings > Digital Wellbeing > Bedtime Mode > Grayscale</div>
+            </div>
+            <button class="btn btn-sm btn-yellow mt-2" id="tip-grayscale-trigger">
+              Toggle Grayscale On This Page Now
+            </button>
+          </div>
+        </div>
+
+        <div class="tip-step-card">
+          <div class="step-num-badge">2</div>
+          <div class="step-body">
+            <h4>Disable All Non-Human Notifications</h4>
+            <p>Allow notifications ONLY from direct messages from real family & friends. Silence algorithmic suggestions, "X posted for the first time in a while", and sales pings.</p>
+          </div>
+        </div>
+
+        <div class="tip-step-card">
+          <div class="step-num-badge">3</div>
+          <div class="step-body">
+            <h4>Keep Your Phone Outside the Bedroom</h4>
+            <p>Buy a $10 analog alarm clock. Charging your phone across the room or in another space guarantees you wake up with your own thoughts rather than someone else's feed.</p>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-primary btn-full" data-close="modal-tips">Got it! Back to Kit</button>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- MODAL 2: SCREEN-TIME CALCULATOR -->
+  <div class="modal-backdrop" id="modal-tracker" aria-hidden="true">
+    <div class="modal-dialog card-orange">
+      <div class="modal-header">
+        <div class="modal-title-group">
+          <span class="modal-icon">📊</span>
+          <h3>Screen-Time Reality Calculator</h3>
+        </div>
+        <button class="modal-close-btn" data-close="modal-tracker" aria-label="Close modal">&times;</button>
+      </div>
+      <div class="modal-body">
+        <p class="calc-intro">Slide to your average daily phone screen time:</p>
+        
+        <div class="slider-control-box">
+          <div class="slider-display">
+            <span class="hours-large" id="slider-hours-val">4.5</span>
+            <span class="hours-unit">hours / day</span>
+          </div>
+          <input type="range" id="screentime-slider" min="1" max="12" step="0.5" value="4.5" class="custom-range-slider">
+          <div class="slider-ticks">
+            <span>1h (Light)</span>
+            <span>4.5h (Average)</span>
+            <span>8h+ (Heavy)</span>
+          </div>
+        </div>
+
+        <!-- Calculated Real-World Stats -->
+        <div class="calc-results-card">
+          <div class="calc-stat-row">
+            <span class="stat-emoji">🗓️</span>
+            <div class="stat-info">
+              <div class="stat-big-num" id="calc-days-year">68.4 Days</div>
+              <div class="stat-sub">Spent staring at your screen every single year</div>
+            </div>
+          </div>
+
+          <div class="calc-stat-row">
+            <span class="stat-emoji">⏳</span>
+            <div class="stat-info">
+              <div class="stat-big-num" id="calc-decade-years">1.9 Full Years</div>
+              <div class="stat-sub">Of consecutive waking 24-hr days over 10 years</div>
+            </div>
+          </div>
+
+          <div class="alternative-possibilities">
+            <strong>What you could accomplish in that reclaimed time:</strong>
+            <ul class="possibility-list">
+              <li>📖 Read approximately <span id="books-count">90</span> books</li>
+              <li>🎸 Master an instrument or language (<span id="hours-skills">1,640</span> hrs)</li>
+              <li>☕ Have <span id="conversations-count">540</span> in-person coffee chats with best friends</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-yellow btn-full" id="btn-print-from-modal">
+          🖨️ Download Printable Habit Tracker Sheet
+        </button>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- MODAL 3: MINDFULNESS PACER & GROUNDING -->
+  <div class="modal-backdrop" id="modal-mindfulness" aria-hidden="true">
+    <div class="modal-dialog card-green">
+      <div class="modal-header">
+        <div class="modal-title-group">
+          <span class="modal-icon">💖</span>
+          <h3>5-Min Mindfulness Tools</h3>
+        </div>
+        <button class="modal-close-btn" data-close="modal-mindfulness" aria-label="Close modal">&times;</button>
+      </div>
+      <div class="modal-body">
+        
+        <!-- Tab selector between Box Breathing & Grounding -->
+        <div class="sub-tab-pills">
+          <button class="sub-tab-btn active" id="tab-btn-breathing">🌬️ Box Breathing</button>
+          <button class="sub-tab-btn" id="tab-btn-grounding">🖐️ 5-4-3-2-1 Grounding</button>
+        </div>
+
+        <!-- Tool 1: Interactive Box Breathing Pacer -->
+        <div id="tool-box-breathing" class="mindfulness-tool-panel active">
+          <p class="tool-desc">Used by Navy SEALs and psychologists to calm acute nervous system fight-or-flight triggers within 2 minutes.</p>
+          
+          <div class="breathing-circle-container">
+            <div class="breathing-outer-ring">
+              <div class="breathing-inner-circle" id="breathing-circle">
+                <span class="breath-action-text" id="breath-action-text">Inhale (4s)</span>
+                <span class="breath-timer-count" id="breath-timer-count">4</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="breathing-controls">
+            <button id="btn-toggle-breathing" class="btn btn-primary btn-sm">
+              <span id="breath-btn-label">⏸️ Pause Exercise</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Tool 2: 5-4-3-2-1 Sensory Grounding -->
+        <div id="tool-grounding" class="mindfulness-tool-panel" style="display: none;">
+          <p class="tool-desc">When comparison anxiety or panic hits, pull your mind back into the physical room with your senses:</p>
+          
+          <div class="grounding-checklist">
+            <div class="grounding-step">
+              <span class="g-num">5</span>
+              <div><strong>Things you can SEE:</strong> Look around for 5 distinct objects, colors, or shadows.</div>
+            </div>
+            <div class="grounding-step">
+              <span class="g-num">4</span>
+              <div><strong>Things you can FEEL:</strong> Feet on the ground, clothes on your skin, table texture.</div>
+            </div>
+            <div class="grounding-step">
+              <span class="g-num">3</span>
+              <div><strong>Things you can HEAR:</strong> Distant traffic, hum of a fan, birds chirping.</div>
+            </div>
+            <div class="grounding-step">
+              <span class="g-num">2</span>
+              <div><strong>Things you can SMELL:</strong> Fresh air, coffee aroma, your jacket.</div>
+            </div>
+            <div class="grounding-step">
+              <span class="g-num">1</span>
+              <div><strong>Good thing about YOURSELF:</strong> One quality you love that has nothing to do with looks or likes.</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-primary btn-full" data-close="modal-mindfulness">Done & Feeling Centered</button>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- MODAL 4: TRUSTED RESOURCES & HELPLINES -->
+  <div class="modal-backdrop" id="modal-resources" aria-hidden="true">
+    <div class="modal-dialog card-lavender">
+      <div class="modal-header">
+        <div class="modal-title-group">
+          <span class="modal-icon">📖</span>
+          <h3>Trusted Wellness Resources</h3>
+        </div>
+        <button class="modal-close-btn" data-close="modal-resources" aria-label="Close modal">&times;</button>
+      </div>
+      <div class="modal-body">
+        
+        <div class="resource-group-title">Recommended Digital Wellness Apps</div>
+        <div class="app-cards-list">
+          <div class="app-rec-item">
+            <span class="app-badge-icon">🌳</span>
+            <div class="app-info">
+              <strong>Forest App</strong>
+              <span>Gamified timer where virtual trees grow while you stay off your phone.</span>
+            </div>
+          </div>
+          <div class="app-rec-item">
+            <span class="app-badge-icon">⏳</span>
+            <div class="app-info">
+              <strong>One Sec</strong>
+              <span>Forces a 3-second deep breath before opening social apps, breaking the impulse reflex.</span>
+            </div>
+          </div>
+          <div class="app-rec-item">
+            <span class="app-badge-icon">💎</span>
+            <div class="app-info">
+              <strong>Opal</strong>
+              <span>Deep-focus screen time blocking with focus scores and scheduled app lockouts.</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="resource-group-title mt-3">Free 24/7 Student Mental Health Support</div>
+        <div class="helplines-list">
+          <a href="sms:741741?&body=HOME" class="helpline-card">
+            <div class="help-title">Crisis Text Line</div>
+            <div class="help-action">Text <strong>HOME</strong> to <strong>741741</strong> (Free, confidential 24/7)</div>
+          </a>
+          <a href="tel:988" class="helpline-card">
+            <div class="help-title">988 Suicide & Crisis Lifeline</div>
+            <div class="help-action">Call or Text <strong>988</strong> (English & Spanish, 24/7)</div>
+          </a>
+          <a href="tel:8008528336" class="helpline-card">
+            <div class="help-title">Teen Line (By Teens, For Teens)</div>
+            <div class="help-action">Call <strong>(800) 852-8336</strong> or text TEEN to 839863</div>
+          </a>
+        </div>
+
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-primary btn-full" data-close="modal-resources">Close</button>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- MODAL 5: PRINTABLE BULLET JOURNAL TRACKER SHEET -->
+  <div class="modal-backdrop" id="modal-printable" aria-hidden="true">
+    <div class="modal-dialog card-printable">
+      <div class="modal-header">
+        <div class="modal-title-group">
+          <span class="modal-icon">🖨️</span>
+          <h3>Printable Habit Journal</h3>
+        </div>
+        <button class="modal-close-btn" data-close="modal-printable" aria-label="Close modal">&times;</button>
+      </div>
+      <div class="modal-body printable-sheet-preview" id="printable-sheet-content">
+        <!-- Physical paper format for printing -->
+        <div class="paper-sheet">
+          <div class="sheet-header">
+            <div class="sheet-tag">DON'T MEASURE YOUR WORTH IN LIKES • RESET TRACKER</div>
+            <h2>MY 7-DAY REAL-LIFE LOG</h2>
+            <p>Target: Less comparison, more genuine living.</p>
+          </div>
+          
+          <table class="printable-table">
+            <thead>
+              <tr>
+                <th>Day</th>
+                <th>Offline Habit Practice</th>
+                <th>Screen Time</th>
+                <th>Mood Reflection</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>Mon</td><td>Phone-free breakfast & walking</td><td>____ hrs</td><td>[  ] 😫  [  ] 😐  [  ] 😊</td></tr>
+              <tr><td>Tue</td><td>30 mins reading or drawing</td><td>____ hrs</td><td>[  ] 😫  [  ] 😐  [  ] 😊</td></tr>
+              <tr><td>Wed</td><td>Coffee with a friend (no phones)</td><td>____ hrs</td><td>[  ] 😫  [  ] 😐  [  ] 😊</td></tr>
+              <tr><td>Thu</td><td>Unfollow 3 accounts that sting</td><td>____ hrs</td><td>[  ] 😫  [  ] 😐  [  ] 😊</td></tr>
+              <tr><td>Fri</td><td>Watch the sunset without cameras</td><td>____ hrs</td><td>[  ] 😫  [  ] 😐  [  ] 😊</td></tr>
+              <tr><td>Sat</td><td>Outdoor walk or sports</td><td>____ hrs</td><td>[  ] 😫  [  ] 😐  [  ] 😊</td></tr>
+              <tr><td>Sun</td><td>Notice 3 real moments of joy</td><td>____ hrs</td><td>[  ] 😫  [  ] 😐  [  ] 😊</td></tr>
+            </tbody>
+          </table>
+
+          <div class="sheet-notes-area">
+            <div class="sheet-notes-title">Weekly Reflection / Things that made me smile this week:</div>
+            <div class="ruled-line"></div>
+            <div class="ruled-line"></div>
+            <div class="ruled-line"></div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-yellow" id="btn-trigger-print">
+          🖨️ Print Now (or Save PDF)
+        </button>
+        <button class="btn btn-secondary-sm" data-close="modal-printable">
+          Close
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL 6: SIMPLE LOGIN / PROFILE MODAL (Name, DOB, Password) -->
+  <div class="modal-backdrop" id="modal-login" aria-hidden="true">
+    <div class="modal-dialog card-login washi-tape-top">
+      <div class="washi-tape" style="background-color: rgba(168, 230, 207, 0.85);"></div>
+      <div class="modal-header">
+        <div class="modal-title-group">
+          <span class="modal-icon">🔐</span>
+          <div>
+            <h3>Student Well-Being Pass</h3>
+            <span class="modal-subtitle-sm">Save & preserve all your progress</span>
+          </div>
+        </div>
+        <button class="modal-close-btn" data-close="modal-login" aria-label="Close modal">&times;</button>
+      </div>
+
+      <div class="modal-body">
+        <p class="login-intro">
+          Enter your <strong>Name</strong>, <strong>DOB</strong>, and a <strong>Password</strong> to keep your habits, quiz scores, and pledge saved on this device.
+        </p>
+
+        <form id="auth-form" class="auth-card-form" onsubmit="return false;">
+          <div class="form-group">
+            <label for="auth-input-name" class="form-label">
+              <span>👤 Your Full Name or Nickname</span>
+            </label>
+            <input 
+              type="text" 
+              id="auth-input-name" 
+              class="form-input" 
+              placeholder="e.g. Maya Sharma" 
+              required 
+              maxlength="30"
+              autocomplete="name"
+            >
+          </div>
+
+          <div class="form-group">
+            <label for="auth-input-dob" class="form-label">
+              <span>🎂 Date of Birth (DOB)</span>
+            </label>
+            <input 
+              type="date" 
+              id="auth-input-dob" 
+              class="form-input" 
+              required
+              autocomplete="bday"
+            >
+          </div>
+
+          <div class="form-group">
+            <label for="auth-input-password" class="form-label">
+              <span>🔑 Password</span>
+            </label>
+            <div class="password-input-wrap">
+              <input 
+                type="password" 
+                id="auth-input-password" 
+                class="form-input" 
+                placeholder="Enter or create your password" 
+                required 
+                maxlength="50"
+                autocomplete="current-password"
+              >
+              <button type="button" id="btn-toggle-pwd" class="pwd-toggle-btn" title="Show or hide password" aria-label="Toggle password visibility">
+                👁️
+              </button>
+            </div>
+            <span class="field-hint">If this is your first time, this password will protect your journal. If returning, enter your existing password.</span>
+          </div>
+
+          <div id="auth-feedback" class="auth-feedback-box" style="display: none;"></div>
+
+          <button type="submit" id="btn-submit-auth" class="btn btn-yellow btn-full btn-large mt-2">
+            <span>✨ Unlock & Enter My Journal</span>
+          </button>
+
+          <button type="button" id="btn-reset-profile-pwd" class="btn-text-link mt-2" style="display: none; width: 100%; text-align: center; font-size: 0.75rem;">
+            ⚠️ Forgot password? Reset password for this profile
+          </button>
+        </form>
+
+        <div class="auth-security-note">
+          <span class="shield-icon">🛡️</span>
+          <span>All data is preserved locally in your browser storage. You can log out anytime and switch profiles without losing your progress.</span>
+        </div>
+      </div>
+
+      <div class="modal-footer">
+        <button class="btn btn-secondary-sm btn-full" data-close="modal-login">
+          Continue as Guest
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
